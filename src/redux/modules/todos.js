@@ -5,7 +5,7 @@ export const __getTodos = createAsyncThunk(
   "todos/getTodos",
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.get("http://localhost:3001/todos");
+      const data = await axios.get(" https://vast-escarpment-98213.herokuapp.com/");
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -23,13 +23,13 @@ export const todos = createSlice({
   reducers: {
     createTodo(state, action) {
       state.todos.push(action.payload);
-      axios.post("http://localhost:3001/todos",action.payload);
+      axios.post(" https://vast-escarpment-98213.herokuapp.com/",action.payload);
     },
 
     deleteTodo(state, action) {
       let index = state.todos.findIndex((todo) => todo.id === action.payload);
       state.todos.splice(index, 1);
-      axios.delete(`http://localhost:3001/todos/${action.payload}`);
+      axios.delete(` https://vast-escarpment-98213.herokuapp.com//${action.payload}`);
     },
 
     updateTodo(state, action) {
@@ -37,7 +37,7 @@ export const todos = createSlice({
         (todo) => todo.id === action.payload.id
       );
       state.todos.splice(index, 1, action.payload);
-      axios.patch(`http://localhost:3001/todos/${action.payload.id}`,action.payload);
+      axios.patch(`https://vast-escarpment-98213.herokuapp.com/${action.payload.id}`,action.payload);
     },
   },
   extraReducers: {

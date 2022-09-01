@@ -5,7 +5,7 @@ export const __getComments = createAsyncThunk(
   "comments/getComments",
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.get("http://localhost:3001/comments");
+      const data = await axios.get("https://vast-escarpment-98213.herokuapp.com/");
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -24,7 +24,7 @@ export const comments = createSlice({
     // 리듀서 안에 만든 함수 자체가 리듀서 로직이자, Action creator가 된다 ✨
     createComment(state, action) {
       state.comments.push(action.payload);
-      axios.post("http://localhost:3001/comments",action.payload);
+      axios.post("https://vast-escarpment-98213.herokuapp.com/",action.payload);
     },
 
     deleteComment(state, action) {
@@ -32,7 +32,7 @@ export const comments = createSlice({
         (comment) => comment.id === action.payload //payload는 comment의 id임
       );
       state.comments.splice(index, 1);
-      axios.delete(`http://localhost:3001/comments/${action.payload}`);
+      axios.delete(`https://vast-escarpment-98213.herokuapp.com/${action.payload}`);
     },
 
     updateComment(state, action) {
@@ -40,7 +40,7 @@ export const comments = createSlice({
         (comment) => comment.id === action.payload.id //payload는 수정된 comment객체 하나 postId, id, nickname, desc(수정)
       );
       state.comments.splice(index, 1, action.payload); // state에서 인덱스가 일치하는거 하나 제거하고 payload넣어라
-      axios.patch(`http://localhost:3001/comments/${action.payload.id}`,action.payload);
+      axios.patch(`https://vast-escarpment-98213.herokuapp.com/${action.payload.id}`,action.payload);
     },
   },
   extraReducers: {

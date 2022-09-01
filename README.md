@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# 갓생살기 프로젝트 (투두리스트)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

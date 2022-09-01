@@ -7,7 +7,7 @@ import { __getTodos } from "../../redux/modules/todos";
 const TodosList = () => {
   const dispatch = useDispatch();
   const { isLoading, error, todos } = useSelector((state) => state.todos);
-  console.log (todos);
+  // console.log (todos);
   useEffect(() => {
     dispatch(__getTodos());
   }, [dispatch]);
